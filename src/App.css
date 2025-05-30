@@ -1,0 +1,97 @@
+body{
+  overflow-x: hidden; 
+  background-color: #FBFFF5; 
+}
+.ant-layout{
+  height: auto;
+}
+
+.header{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
+  width: auto;
+  height: 10vh;
+  background-color: transparent;
+  max-width: 110vw;
+
+}
+
+.title{
+  margin: 0;
+}
+
+.ant-layout-header{
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  background-color: whitesmoke;
+}
+
+.profile {
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  height: auto;
+  font-size: medium;
+  
+  cursor: pointer;
+  border-radius: 6px;
+  color: #212529;
+  background-color: #e8f5e9;
+  border: 1px solid #388e3c;
+  transition: all 0.3s ease;
+  margin-right: 1vw;
+  margin-top: 5vh;
+  
+}
+
+.profile svg {
+  color: inherit;
+  transition: color 0.3s;
+}
+
+.profile:hover {
+  background-color: #388e3c;
+  color: white;
+  transform: scale(1.05);
+  border: 1px solid #81c784;
+  box-shadow: 0 0 6px rgba(129, 199, 132, 0.6);
+}
+
+.profile:hover svg {
+  color: white;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  padding: 4px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  background-color: #e8f5e9;
+  border: 1px solid #388e3c;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 5vh;
+  height: 40px;
+}
+
+.filter:hover {
+  background-color: #388e3c;
+  color: white;
+  transform: scale(1.05);
+  border: 1px solid #81c784;
+  box-shadow: 0 0 6px rgba(129, 199, 132, 0.6);
+}
+
+.filter:hover svg {
+  color: white;
+}
+
+.username{
+  margin:0
+}
