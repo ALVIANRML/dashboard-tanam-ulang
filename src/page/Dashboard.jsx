@@ -4,6 +4,7 @@ import { UserOutlined, LogoutOutlined } from "@ant-design/icons";
 import SideBar from "../component/Sidebar";
 import DashboardUtama from "../view/DashboardUtama";
 import "../App.css";
+import Visualisasi from "../view/Visualisasi";
 
 const { RangePicker } = DatePicker;
 const { Header, Content } = Layout;
@@ -110,7 +111,9 @@ const Dashboard = () => {
               backgroundColor: "#FBFFF5",
             }}
           >
-            <DashboardUtama />
+            {/* <DashboardUtama /> */}
+            <Visualisasi/>
+
           </div>
           <div
             style={{
