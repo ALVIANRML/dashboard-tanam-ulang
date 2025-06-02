@@ -34,7 +34,7 @@ const Root = () => {
             zIndex: 9999,
           }}>
           <Spin size="large" />
-          <p style={{ marginTop: 16, color: 'white' }}>Memuat...</p>
+          <p style={{ marginTop: 16, color: 'black' }}>Memuat...</p>
         </div>
       ) : authenticated ? (
         <Dashboard />

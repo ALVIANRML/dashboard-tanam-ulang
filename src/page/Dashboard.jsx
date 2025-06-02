@@ -2,9 +2,8 @@ import { useState } from 'react';
 import { Layout, theme, DatePicker, Menu, Dropdown, Select } from 'antd';
 import { UserOutlined, LogoutOutlined } from '@ant-design/icons';
 import SideBar from '../component/Sidebar';
-import DashboardUtama from '../view/DashboardUtama';
+import Routes from '../routes/Routes';
 import '../App.css';
-import Visualisasi from '../view/Visualisasi';
 
 const { RangePicker } = DatePicker;
 const { Header, Content } = Layout;
@@ -105,8 +104,8 @@ const Dashboard = () => {
               width: collapsed ? '109vw' : '100vw',
               backgroundColor: '#FBFFF5',
             }}>
-            {/* <DashboardUtama /> */}
-            <Visualisasi />
+            {/* View*/}
+            <Routes />
           </div>
           <div
             style={{

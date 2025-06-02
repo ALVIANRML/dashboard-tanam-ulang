@@ -1,63 +1,63 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
 import {
   AppstoreOutlined,
   FileDoneOutlined,
   FileImageOutlined,
   UploadOutlined,
-} from "@ant-design/icons";
-import { Layout, Menu } from "antd";
-import LogoPtpn from "../assets/img/PTPN-4.png";
-import "../assets/css//sider/SideBar.css";
+} from '@ant-design/icons';
+import { AppContext } from '../context/AppContext';
+import { Layout, Menu } from 'antd';
+import LogoPtpn from '../assets/img/PTPN-4.png';
+import '../assets/css//sider/SideBar.css';
 
 const { Sider } = Layout;
 
 const SideBar = ({ collapsed, setCollapsed }) => {
+  const { handleRoute, route } = useContext(AppContext);
+
   return (
     <Sider
       collapsible
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
       style={{
-        backgroundColor: "#2F5D50", // Sage green
-        position: "fixed",
+        backgroundColor: '#2F5D50', // Sage green
+        position: 'fixed',
         left: 0,
         top: 0,
-        height: "100vh",
+        height: '100vh',
         zIndex: 1200,
       }}
       width="12vw"
       collapsedWidth={80}
       breakpoint="lg"
-      theme="light"
-    >
+      theme="light">
       <div
         style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: collapsed ? "center" : "start",
-          padding: "16px",
-          flexDirection: "row",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: collapsed ? 'center' : 'start',
+          padding: '16px',
+          flexDirection: 'row',
           gap: 10,
-        }}
-      >
+        }}>
         <img
           src={LogoPtpn}
           alt="Company Logo"
           style={{
-            width: "70px",
-            height: "70px",
-            marginBottom: "8px",
+            width: '70px',
+            height: '70px',
+            marginBottom: '8px',
           }}
         />
         {!collapsed && (
           <h3
             style={{
-              color: "white", // teks hijau gelap
-              fontSize: "1rem",
-              textAlign: "left",
-              fontWeight: "bold",
-            }}
-          >
+              color: 'white', // teks hijau gelap
+              fontSize: '1rem',
+              textAlign: 'left',
+              fontWeight: 'bold',
+            }}>
             Dashboard <br />
             Tanaman Ulang
           </h3>
@@ -67,26 +67,28 @@ const SideBar = ({ collapsed, setCollapsed }) => {
       <Menu
         className="custom-sidebar-menu"
         style={{
-          height: "100%",
-          backgroundColor: "#2F5D50",
+          height: '100%',
+          backgroundColor: '#2F5D50',
           padding: 10,
-          width: "100%",
+          width: '100%',
           fontSize: 17,
-          color: "white",
+          color: 'white',
         }}
         theme="dark"
         mode="inline"
-        defaultSelectedKeys={["dashboardUtama"]}
+        onClick={(e) => handleRoute(e.key)}
+        defaultSelectedKeys={[route]}
+        selectedKeys={[route]}
         items={[
           {
-            key: "dashboardUtama",
+            key: 'dashboard',
             icon: <AppstoreOutlined />,
-            label: "Dashboard Utama",
+            label: 'Dashboard Utama',
           },
           {
-            key: "visualisasi",
+            key: 'visualisasi',
             icon: <FileImageOutlined />,
-            label: "Visualisasi",
+            label: 'Visualisasi',
           },
         ]}
       />
