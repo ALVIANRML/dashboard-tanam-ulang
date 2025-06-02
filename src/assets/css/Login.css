@@ -1,17 +1,21 @@
-
-
+.bg-login{
+  width: 100vw;
+  height: 100vh;
+  background-color: #2F5D50;
+  overflow: hidden;
+}
 .login-page {
-  background-color: #27594c;
-  height: auto;
-  width: 50vw;
-
-  justify-content: center;
-  align-items: center;
+  background-color: transparent;
+  height: 100vh;
+  width: 100vw;
+  padding-top: 10vh;
+  justify-items: center;
+  /* align-content: center; */
 }
 
 .login-container {
   display: flex;
-  width: 50vw;
+  width: 60vw;
   height: 70vh;
   background-color: #ffffff;
   border-radius: 10px;
@@ -21,7 +25,7 @@
 
 .login-left {
   width: 100%;
-  background-color: #103c36;
+  background-color: #103731;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,10 +71,9 @@
 }
 
 .login-form input {
-  margin-bottom: 20px;
   padding: 8px;
   height: 4vh;
-  font-size: 2rem;
+  font-size: 1.5rem;
   border-radius: 8px;
   background-color: transparent;
   color: black;
@@ -83,6 +86,7 @@
   border: none;
   padding: 10px;
   font-size: 2rem;
+  margin-top: 5vh;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;

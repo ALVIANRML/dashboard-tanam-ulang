@@ -8,5 +8,6 @@ import Dashboard from "./page/Dashboard.jsx"
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Dashboard />
+    {/* <Login/> */}
   </StrictMode>,
 )
