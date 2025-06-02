@@ -48,6 +48,11 @@
   opacity: 0.8  ;
 }
 
+.error-message {
+  color: red;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
 
 .logo {
   width: 60px;
