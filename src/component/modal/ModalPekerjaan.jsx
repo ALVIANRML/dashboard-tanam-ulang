@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { CalendarOutlined } from '@ant-design/icons';
+import { CalendarOutlined } from "@ant-design/icons";
+import { DatePicker } from "antd";
+import dayjs from "dayjs";
 export default function ModalPekerjaan({
   showModal,
   selectedItem,
@@ -9,6 +11,7 @@ export default function ModalPekerjaan({
   const [tanggal, setTanggal] = useState("");
   const [realisasiFisik, setRealisasiFisik] = useState("");
   const [uploadedFile, setUploadedFile] = useState(null);
+  const [previewImage, setPreviewImage] = useState(null);
 
   if (!showModal || !selectedItem) {
     return null;
@@ -16,8 +19,9 @@ export default function ModalPekerjaan({
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
-    if (file) {
+    if (file && file.type.startsWith("image/")) {
       setUploadedFile(file);
+      setPreviewImage(URL.createObjectURL(file));
     }
   };
 
@@ -242,8 +246,8 @@ export default function ModalPekerjaan({
                         position: "absolute",
                         right: "16px",
                         top: "70%",
-                        height:"100%",
-                        width:"auto",
+                        height: "100%",
+                        width: "auto",
                         transform: "translateY(-50%)",
                         pointerEvents: "none",
                       }}
@@ -336,27 +340,17 @@ export default function ModalPekerjaan({
                         onChange={handleFileUpload}
                         style={{ display: "none" }}
                       />
-                      {uploadedFile ? (
-                        <div style={{ textAlign: "center" }}>
-                          <div
-                            style={{
-                              fontSize: "24px",
-                              color: "#8FAE7B",
-                              marginBottom: "8px",
-                            }}
-                          >
-                            ✓
-                          </div>
-                          <p
-                            style={{
-                              margin: 0,
-                              color: "#666",
-                              fontSize: "14px",
-                            }}
-                          >
-                            {uploadedFile.name}
-                          </p>
-                        </div>
+                      {previewImage ? (
+                        <img
+                          src={previewImage}
+                          alt="Preview"
+                          style={{
+                            maxWidth: "100%",
+                            maxHeight: "100%",
+                            objectFit: "contain",
+                            borderRadius: "12px",
+                          }}
+                        />
                       ) : (
                         <>
                           <div

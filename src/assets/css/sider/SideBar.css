@@ -1,13 +1,12 @@
 .ant-layout-sider-trigger {
-  background-color: #bbf7d0 !important; /* lebih terang dari sage */
-  color: #065f46 !important; /* hijau gelap */
+  background-color: #bbf7d0 !important; 
+  color: #065f46 !important; 
   font-size: 20px !important; 
   transition: all 0.3s ease-in-out;
 }
 
 .ant-layout-sider-trigger:hover {
-  background-color: #86efac !important; /* efek hover lebih gelap */
-  cursor: pointer;
+  background-color: #86efac !important;
 }
 
 

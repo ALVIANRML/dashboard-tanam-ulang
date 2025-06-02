@@ -6,12 +6,14 @@
 }
 .login-page {
   background-color: transparent;
-  height: 100vh;
+  height: 90vh;
   width: 100vw;
-  padding-top: 10vh;
-  justify-items: center;
-  /* align-content: center; */
+  padding: 5vh 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .login-container {
   display: flex;
@@ -116,8 +118,93 @@
 }
 
 .title {
-  font-size: 3rem;
+  font-size: clamp(1.5rem, 4vw, 3rem);
   color: #27594c;
   text-align: start;
   margin: 0;
+}
+
+
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+    width: 90vw;
+    height: auto;
+  }
+
+  .login-left,
+  .login-right {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .logo-title {
+    flex-direction: column;
+    margin-top: 0;
+    margin-bottom: 3vh;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .login-form label,
+  .login-form input {
+    font-size: 1.2rem;
+  }
+
+  .login-form button {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    width: 95vw;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .login-form label,
+  .login-form input {
+    font-size: 1rem;
+  }
+
+  .login-form input {
+    height: 5vh;
+  }
+
+  .login-form button {
+    font-size: 1.2rem;
+    padding: 8px;
+  }
+
+  .logo {
+    width: 15vw;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-left {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
 }

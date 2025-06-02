@@ -12,7 +12,18 @@ const options = {
     text: "",
   },
   xAxis: {
-    categories: ["BAH JAMBI", "ADOLINA", "LOKASI C"],
+    categories: [
+      "BAH JAMBI",
+      "ADOLINA",
+      "LOKASI C",
+      "LOKASI D",
+      "LOKASI E",
+      "LOKASI F",
+      "LOKASI G",
+      "LOKASI H",
+      "LOKASI I",
+      "LOKASI J",
+    ],
     title: {
       text: null,
     },
@@ -42,7 +53,7 @@ const options = {
   series: [
     {
       name: "Paket",
-      data: [3, 5, 2],
+      data: [3, 5, 2,5,6,4,6,7,8,9],
     },
   ],
 };

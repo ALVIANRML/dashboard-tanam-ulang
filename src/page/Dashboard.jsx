@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Layout, theme, DatePicker, Menu, Dropdown, Select } from "antd";
 import { UserOutlined, LogoutOutlined } from "@ant-design/icons";
 import SideBar from "../component/Sidebar";
@@ -11,6 +11,7 @@ const { Header, Content } = Layout;
 
 const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
+
   const menu = (
     <Menu>
       <Menu.Item
@@ -30,16 +31,33 @@ const Dashboard = () => {
     { label: "Lokasi C", value: "lokasi-c" },
   ];
 
+  useEffect(() => {
+    // Lakukan filtering data di sini kalau perlu
+    console.log("Filter awal:", selectedKebun);
+  }, []);
+
   const handleRangeChange = (dates, dateStrings) => {
     const [startDate, endDate] = dateStrings;
     console.log("Start:", startDate, "End:", endDate);
   };
 
-  const [selectedKebun, setSelectedKebun] = useState("all");
+  const [selectedKebun, setSelectedKebun] = useState(
+    kebunOptions
+      .filter((item) => item.value !== "all")
+      .map((item) => item.value)
+  );
 
-  const handleFilterChange = (value) => {
-    setSelectedKebun(value);
-    // Tambahkan logika filter sesuai dengan kebutuhan
+  const handleFilterChange = (values) => {
+    if (values.includes("all")) {
+      const allValues = kebunOptions
+        .filter((item) => item.value !== "all")
+        .map((item) => item.value);
+      setSelectedKebun(allValues);
+      console.log("Semua kebun dipilih:", allValues);
+    } else {
+      setSelectedKebun(values);
+      console.log("Kebun dipilih:", values);
+    }
   };
 
   return (
@@ -86,13 +104,60 @@ const Dashboard = () => {
             </Dropdown>
             <div className="filter">
               <Select
+                mode="multiple"
                 value={selectedKebun}
                 onChange={handleFilterChange}
-                options={kebunOptions}
+                options={kebunOptions.filter((item) => item.value !== "all")}
                 placeholder="Filter Kebun"
                 bordered={false}
-                style={{ width: 180 }}
-                suffixIcon={<span style={{ color: "green" }}>▼</span>}
+                style={{
+                  width: 280,
+                  backgroundColor: "rgba(255, 255, 255, 0.3)",
+                  borderRadius: "12px",
+                  padding: "4px 8px",
+                  backdropFilter: "blur(6px)",
+                  border: "1px solid #8FAE7B",
+                  color: "#4E342E",
+                }}
+                maxTagCount="responsive"
+                maxTagPlaceholder={(omittedValues) =>
+                  `+ ${omittedValues.length} lainnya`
+                }
+                tagRender={(props) => {
+                  const { label, closable, onClose } = props;
+                  return (
+                    <span
+                      style={{
+                        backgroundColor: "rgba(255,255,255,0.6)",
+                        border: "1px solid #8FAE7B",
+                        borderRadius: "20px",
+                        padding: "2px 10px",
+                        marginRight: 4,
+                        fontSize: 13,
+                        color: "#4E342E",
+                        display: "inline-flex",
+                        alignItems: "center",
+                      }}
+                    >
+                      {label}
+                      {closable && (
+                        <span
+                          onClick={onClose}
+                          style={{
+                            marginLeft: 6,
+                            cursor: "pointer",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          ×
+                        </span>
+                      )}
+                    </span>
+                  );
+                }}
+                suffixIcon={
+                  <span style={{ color: "#4E342E", fontSize: "14px" }}>▼</span>
+                }
               />
             </div>
           </div>
@@ -111,9 +176,8 @@ const Dashboard = () => {
               backgroundColor: "#FBFFF5",
             }}
           >
-            {/* <DashboardUtama /> */}
-            <Visualisasi/>
-
+            <DashboardUtama />
+            {/* <Visualisasi/> */}
           </div>
           <div
             style={{

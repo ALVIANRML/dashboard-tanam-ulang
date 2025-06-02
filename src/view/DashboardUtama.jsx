@@ -143,7 +143,7 @@ const DashboardUtama = () => {
   const visibleCards = getVisibleCards();
 
   return (
-    <div style={{ position: "relative", height: "100vh", width: "100%" }}>
+    <div style={{ position: "relative", height: "100vh", width: "100%", overflow:"hidden" }}>
       <MapContainer
         center={[-2.3, 99.2]}
         zoom={7}

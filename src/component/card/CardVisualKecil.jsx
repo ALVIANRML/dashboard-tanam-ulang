@@ -26,11 +26,14 @@ export default function CardVisualKecil() {
   };
 
   const dataKebun = [
-    { nama: "BAH JAMBI", data: [3, 5, 2] },
-    { nama: "ADOLINA", data: [4, 2, 6] },
-    { nama: "LOKASI C", data: [1, 3, 4] },
-    { nama: "KEBUN D", data: [2, 7, 3] },
-    { nama: "KEBUN E", data: [2, 7, 3] },
+    { nama: "Persiapan Lahan dan Pengolahan Lahan", data: [5,4,6,7,8,4,3,4,5,1] },
+    { nama: "Buat Jalan Baru & Rehap Jalan", data: [5,4,6,7,8,4,3,4,5,1] },
+    { nama: "Membangun Teras dan Tapak Individu", data: [5,4,6,7,8,4,3,4,5,1] },
+    { nama: "Membuat dan Rehab Parit", data: [5,4,6,7,8,4,3,4,5,1] },
+    { nama: "Mengatur Jarak dan Gali Lobang Tanam", data: [5,4,6,7,8,4,3,4,5,1] },
+    { nama: "Ecer dan Tanam Bibit", data: [5,4,6,7,8,4,3,4,5,1] },
+    { nama: "Pengangkutan Pupuk dan Bibit", data: [5,4,6,7,8,4,3,4,5,1] },
+    { nama: "Memupuk Lubang", data: [5,4,6,7,8,4,3,4,5,1] },
   ];
 
   const groupedData = [];
@@ -40,16 +43,15 @@ export default function CardVisualKecil() {
 
   return (
     <div>
-      {/* 🗓️ Date Filter */}
       <div style={{ marginBottom: "20px", textAlign: "left" }}>
         <DatePicker onChange={handleDateChange} />
       </div>
 
       {/* Kartu Data */}
       {groupedData.map((row, rowIndex) => (
-        <Row gutter={20} key={rowIndex} style={{ marginBottom: "5vh" }}>
+        <div>
           {row.map((item, index) => (
-            <Col span={10} key={index}>
+            <Col span={21} key={index} style={{marginTop:"10vh"}}>
               <Card
                 style={{
                   boxShadow: "0 8px 16px rgba(0, 0, 0, 0.15)",
@@ -97,7 +99,7 @@ export default function CardVisualKecil() {
               </Card>
             </Col>
           ))}
-        </Row>
+        </div>
       ))}
 
       {isModalOpen && (

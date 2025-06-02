@@ -84,6 +84,11 @@ const SideBar = ({ collapsed, setCollapsed }) => {
             label: "Dashboard Utama",
           },
           {
+            key: "peta",
+            icon: <AppstoreOutlined />,
+            label: "Peta",
+          },
+          {
             key: "visualisasi",
             icon: <FileImageOutlined />,
             label: "Visualisasi",

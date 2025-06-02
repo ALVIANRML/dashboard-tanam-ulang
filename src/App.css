@@ -72,21 +72,15 @@ body{
   padding: 4px 12px;
   font-size: 14px;
   border-radius: 6px;
-  background-color: #e8f5e9;
-  border: 1px solid #388e3c;
+  background-color: transparent;
+  /* border: 1px solid #388e3c; */
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 5vh;
   height: 40px;
 }
 
-.filter:hover {
-  background-color: #388e3c;
-  color: white;
-  transform: scale(1.05);
-  border: 1px solid #81c784;
-  box-shadow: 0 0 6px rgba(129, 199, 132, 0.6);
-}
+
 
 .filter:hover svg {
   color: white;
