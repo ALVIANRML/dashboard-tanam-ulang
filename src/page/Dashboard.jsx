@@ -1,15 +1,16 @@
-import { useState, useEffect } from "react";
-import { Layout, theme, DatePicker, Menu, Dropdown, Select } from "antd";
+import { useState, useEffect, useContext } from "react";
+import { Layout, DatePicker, Menu, Dropdown, Select } from "antd";
 import { UserOutlined, LogoutOutlined } from "@ant-design/icons";
-import SideBar from "../component/Sidebar";
-import DashboardUtama from "../view/DashboardUtama";
+import Routes from "../routes/Routes";
 import "../App.css";
-import Visualisasi from "../view/Visualisasi";
+import { AppContext } from "../context/AppContext";
+import LogoPtpn from "../component/LogoPtpn";
 
 const { RangePicker } = DatePicker;
 const { Header, Content } = Layout;
 
 const Dashboard = () => {
+  const { userLoged } = useContext(AppContext);
   const [collapsed, setCollapsed] = useState(false);
 
   const menu = (
@@ -23,6 +24,12 @@ const Dashboard = () => {
       </Menu.Item>
     </Menu>
   );
+
+  const handleDateChange = (date, dateString) => {
+    setSelectedDate(dateString); // format string seperti "2025-05-30"
+    // Kalau mau filter data berdasarkan tanggal, tambahkan logika di sini
+    console.log("Tanggal dipilih:", dateString);
+  };
 
   const kebunOptions = [
     { label: "Semua Kebun", value: "all" },
@@ -41,11 +48,7 @@ const Dashboard = () => {
     console.log("Start:", startDate, "End:", endDate);
   };
 
-  const [selectedKebun, setSelectedKebun] = useState(
-    kebunOptions
-      .filter((item) => item.value !== "all")
-      .map((item) => item.value)
-  );
+  const [selectedKebun, setSelectedKebun] = useState("all");
 
   const handleFilterChange = (values) => {
     if (values.includes("all")) {
@@ -62,11 +65,6 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <SideBar
-        collapsed={collapsed}
-        setCollapsed={setCollapsed}
-        style={{ transition: "width 5.9s ease;" }}
-      />
       <Layout>
         <Header
           style={{
@@ -75,90 +73,66 @@ const Dashboard = () => {
             width: "100%",
             zIndex: 1000,
             padding: 0,
-            backgroundColor: "transparent",
+            backgroundColor: "tranparent",
+            // alignContent:"center",
+            border: "1px solid black",
           }}
         >
           <div
             className="header"
             style={{
               display: "flex",
-              justifyContent: "flex-start",
+              justifyContent: "space-between",
               alignItems: "center",
-              gap: "20px",
               padding: "12px 24px",
               background: "transparent",
             }}
           >
-            {/* Filter kebun */}
+            {/* Logo di kiri */}
+            <LogoPtpn />
 
-            {/* Dropdown profil */}
-            <Dropdown
-              overlay={menu}
-              placement="bottomRight"
-              trigger={["click"]}
-            >
-              <button className="profile">
-                <UserOutlined />
-                <p className="username">Wak leman</p>
-              </button>
-            </Dropdown>
-            <div className="filter">
-              <Select
-                mode="multiple"
-                value={selectedKebun}
-                onChange={handleFilterChange}
-                options={kebunOptions.filter((item) => item.value !== "all")}
-                placeholder="Filter Kebun"
-                bordered={false}
+            {/* Dropdown dan Profile di kanan */}
+            <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+              {/* Dropdown Filter */}
+              <div
                 style={{
-                  width: 280,
-                  backgroundColor: "rgba(255, 255, 255, 0.3)",
-                  borderRadius: "12px",
-                  padding: "4px 8px",
-                  backdropFilter: "blur(6px)",
-                  border: "1px solid #8FAE7B",
-                  color: "#4E342E",
+                  backgroundColor: "#fff",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  padding: "5px 8px",
+                  height: "40px",
+                  display: "flex",
+                  alignItems: "center",
                 }}
-                maxTagCount="responsive"
-                maxTagPlaceholder={(omittedValues) =>
-                  `+ ${omittedValues.length} lainnya`
-                }
-                tagRender={(props) => {
-                  const { label, closable, onClose } = props;
-                  return (
-                    <span
-                      style={{
-                        backgroundColor: "rgba(255,255,255,0.6)",
-                        border: "1px solid #8FAE7B",
-                        borderRadius: "20px",
-                        padding: "2px 10px",
-                        marginRight: 4,
-                        fontSize: 13,
-                        color: "#4E342E",
-                        display: "inline-flex",
-                        alignItems: "center",
-                      }}
-                    >
-                      {label}
-                      {closable && (
-                        <span
-                          onClick={onClose}
-                          style={{
-                            marginLeft: 6,
-                            cursor: "pointer",
-                            fontWeight: "bold",
-                          }}
-                        >
-                          ×
-                        </span>
-                      )}
-                    </span>
-                  );
-                }}
-                suffixIcon={
-                  <span style={{ color: "#4E342E", fontSize: "14px" }}>▼</span>
-                }
-              />
+              >
+                <Select
+                  mode="multiple"
+                  value={selectedKebun}
+                  onChange={handleFilterChange}
+                  options={kebunOptions.filter((item) => item.value !== "all")}
+                  placeholder="Filter Kebun"
+                  bordered={false}
+                  style={{
+                    width: 180,
+                    height: "100%",
+                    display: "flex",
+                    alignItems: "start",
+                  }}
+                  suffixIcon={<span style={{ color: "green" }}>▼</span>}
+                />
+              </div>
+
+              {/* Tombol Profile */}
+              <Dropdown
+                overlay={menu}
+                placement="bottomRight"
+                trigger={["click"]}
+              >
+                <button className="profile">
+                  <UserOutlined />
+                  <p className="username">{userLoged?.FULL_NAME ?? "Admin"}</p>
+                </button>
+              </Dropdown>
             </div>
           </div>
         </Header>
@@ -169,15 +143,16 @@ const Dashboard = () => {
         >
           <div
             style={{
-              marginLeft: collapsed ? 80 : "11.5vw",
+              // marginLeft: collapsed ? 80 : "11.5vw",
               transition: "margin-left 0.3s ease, width 0.3s ease",
               minHeight: 1000,
-              width: collapsed ? "109vw" : "100vw",
+              marginTop: 50,
+              width: "102vw",
               backgroundColor: "#FBFFF5",
             }}
           >
-            <DashboardUtama />
-            {/* <Visualisasi/> */}
+            {/* View*/}
+            <Routes />
           </div>
           <div
             style={{

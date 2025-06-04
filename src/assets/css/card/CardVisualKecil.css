@@ -6,3 +6,30 @@
   background-color: #4e9e6f !important;
   transform: scale(1.03);
 }
+
+.hover-card {
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.hover-card:hover {
+  background-color: #E6F4EA !important; /* Hijau pastel yang lembut */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Optional: efek ke isi card juga */
+.hover-card:hover .hover-content {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+
+/* Perpanjang durasi animasi drawer */
+.custom-drawer .ant-drawer-content-wrapper {
+  transition: all 0.9s ease !important; /* default biasanya 0.3s */
+}
+
+.custom-drawer .ant-drawer-mask {
+  transition: opacity 0.9s ease !important;
+}

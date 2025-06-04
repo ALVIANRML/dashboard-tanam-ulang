@@ -6,16 +6,13 @@ body{
   height: auto;
 }
 
-.header{
+.header {
   display: flex;
-  flex-direction: row-reverse;
   justify-content: space-between;
-  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
-  width: auto;
+  align-items: center;
   height: 10vh;
+  padding: 12px 24px;
   background-color: transparent;
-  max-width: 110vw;
-
 }
 
 .title{
@@ -44,9 +41,6 @@ body{
   background-color: #e8f5e9;
   border: 1px solid #388e3c;
   transition: all 0.3s ease;
-  margin-right: 1vw;
-  margin-top: 5vh;
-  
 }
 
 .profile svg {
@@ -73,10 +67,8 @@ body{
   font-size: 14px;
   border-radius: 6px;
   background-color: transparent;
-  /* border: 1px solid #388e3c; */
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 5vh;
   height: 40px;
 }
 

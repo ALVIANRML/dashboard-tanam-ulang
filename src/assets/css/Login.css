@@ -2,7 +2,7 @@
   width: 100vw;
   height: 100vh;
   background-color: #2F5D50;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .login-page {
   background-color: transparent;
@@ -17,13 +17,15 @@
 
 .login-container {
   display: flex;
+  flex-direction: row;
   width: 60vw;
-  height: 70vh;
+  min-height: 70vh;
   background-color: #ffffff;
   border-radius: 10px;
-  overflow: hidden;
+  overflow: auto; /* ✅ biar gak nge-cut konten */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
+
 
 .login-left {
   width: 100%;
@@ -72,15 +74,16 @@
 .login-form label {
   margin-bottom: 5px;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-align: start;
   color: black ;
 }
 
 .login-form input {
   padding: 8px;
-  height: 4vh;
-  font-size: 1.5rem;
+  height: 3vh;
+  font-size: 1rem;
+  margin-bottom: 2vh;
   border-radius: 8px;
   background-color: transparent;
   color: black;
@@ -92,8 +95,8 @@
   color: white;
   border: none;
   padding: 10px;
-  font-size: 2rem;
-  margin-top: 5vh;
+  font-size: 1.5rem;
+  margin-top: 2vh;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -108,7 +111,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-top: -10vh;
+  margin-top: -3vh;
   margin-bottom: 5vh;
 }
 
@@ -118,62 +121,71 @@
 }
 
 .title {
-  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-size: 2.5rem;
   color: #27594c;
   text-align: start;
   margin: 0;
 }
 
-
-@media (max-width: 768px) {
+/* Responsive Styling */
+@media screen and (max-width: 1024px) {
   .login-container {
     flex-direction: column;
-    width: 90vw;
+    width: 80vw;
     height: auto;
   }
 
-  .login-left,
-  .login-right {
+  .login-left, .login-right {
     width: 100%;
     height: auto;
-    padding: 20px;
   }
 
-  .logo-title {
-    flex-direction: column;
-    margin-top: 0;
-    margin-bottom: 3vh;
-    text-align: center;
+  .login-left {
+    padding: 20px 0;
+  }
+
+  .login-illustration {
+    max-width: 60%;
+  }
+
+  .login-form input {
+    height: 4vh;
   }
 
   .title {
     font-size: 2rem;
+    text-align: center;
   }
 
-  .login-form label,
-  .login-form input {
-    font-size: 1.2rem;
+  .logo-title {
+    flex-direction: column;
+    margin-bottom: 3vh;
+    text-align: center;
   }
 
-  .login-form button {
-    font-size: 1.5rem;
+  .logo {
+    width: 15vw;
   }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .login-container {
-    width: 95vw;
-    box-shadow: none;
-    border-radius: 0;
+    width: 90vw;
+    height: auto;
+    flex-direction: column;
   }
 
-  .login-form label,
-  .login-form input {
-    font-size: 1rem;
+  .login-illustration {
+    max-width: 80%;
+  }
+
+  .login-form label {
+    font-size: 0.9rem;
   }
 
   .login-form input {
-    height: 5vh;
+    font-size: 0.9rem;
+    height: 4vh;
   }
 
   .login-form button {
@@ -181,30 +193,16 @@
     padding: 8px;
   }
 
-  .logo {
-    width: 15vw;
-  }
-
   .title {
     font-size: 1.8rem;
   }
-}
 
-@media (max-width: 480px) {
-  .login-left {
-    display: none;
+  .logo {
+    width: 20vw;
+  }
+
+  .login-right {
+    padding: 20px;
   }
 }
 
-@media (max-width: 768px) {
-  .title {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .title {
-    font-size: 1.5rem;
-    text-align: center;
-  }
-}
